@@ -1,0 +1,124 @@
+.nav {
+  &-checkbox {
+    display: none;
+  }
+  &-button {
+    background-color:#ebebeb;
+    width: 7rem;
+    height: 6rem;
+    position: fixed;
+    z-index: 2000;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 0 1rem 1rem rgba(#000, 0.1);
+    text-align: center;
+    right: 8rem;
+    top: 7rem;
+  }
+  &-bg {
+    background-image: radial-gradient(#292b2e, #12171a);
+    width: 7rem;
+    height: 6rem;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 2px;
+    right: 8rem;
+    top: 7rem;
+    transition: all 0.8s;
+  }
+  &-checkbox:checked ~ &-bg {
+    transform: scale(80);
+  }
+  &-icon {
+    position: relative;
+    margin-top: 3rem;
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      transition: all 0.2s;
+    }
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background: #333;
+      display: inline-block;
+    }
+  }
+  &-button:hover &-icon:before {
+    top: -1rem;
+  }
+  &-button:hover &-icon:after {
+    top: 1rem;
+  }
+  &-checkbox:checked ~ &-button &-icon {
+    background-color: transparent;
+  }
+  &-checkbox:checked ~ &-button &-icon:before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  &-checkbox:checked ~ &-button &-icon:after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+  &-body {
+    position: fixed;
+    top: 0;
+    left: -120%;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1500;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+  &-list {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    width: 100%;
+    text-align: center;
+  }
+  &-link {
+    display: inline-block;
+    font-size: 6rem;
+    font-weight: 400;
+    padding: 1rem 2rem;
+    color: #ebebeb;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    background-image: linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 50%,
+      $color-white 50%
+    );
+    background-size: 220%;
+    &:hover {
+      color: #434950;
+      background-position: 100%;
+      transform: translateX(1rem);
+    }
+    span {
+      display: inline-block;
+      margin-right: 1.5rem;
+    }
+  }
+
+  &-checkbox:checked ~ &-body {
+    opacity: 1;
+    left: 0;
+  }
+}
